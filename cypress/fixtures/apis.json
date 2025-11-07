@@ -1,0 +1,14 @@
+{
+  "apis": [
+    {
+      "name": "Btcheck - News",
+      "url": "https://guibim.github.io/btcheck/news.json",
+      "expectedKeys": ["items", "count"]
+    },
+    {
+      "name": "Btcheck - Price",
+      "url": "https://guibim.github.io/btcheck/btc_price.json",
+      "expectedKeys": ["updated_at", "prices"]
+    }
+  ]
+}

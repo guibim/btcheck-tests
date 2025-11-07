@@ -1,0 +1,121 @@
+# ========================================
+# ⚙️ BTCheck Tests — .gitignore
+# Projeto híbrido: Robot Framework + Cypress
+# ========================================
+
+# --- 🐍 Python / Robot Framework ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.py.class
+*.robot~
+*.db
+*.log
+*.output.xml
+*.rbc
+*.coverage
+.coverage.*
+.cache/
+logs/
+reports/
+results/
+output.xml
+report.html
+log.html
+debug.log
+
+# Arquivos temporários do Browser/Playwright
+.browser/
+.playwright/
+robotframework-browser/
+
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+*.env
+.env.*
+
+# --- 🧪 Cypress ---
+cypress/videos/
+cypress/screenshots/
+cypress/reports/
+cypress/downloads/
+cypress/logs/
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- 🧰 IDEs & Sistemas Operacionais ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.iml
+.DS_Store
+Thumbs.db
+
+# --- 🔒 Sensíveis / Segurança ---
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.bak
+*.old
+secrets.*
+config.*
+.env.local
+.env.test
+.env.dev
+.env.prod
+
+# --- 🧹 Outros ---
+tmp/
+temp/
+__trash__/
+backup/
+*.tmp
+*.bak
+*.old
+*.orig
+
+# --- 🚫 CI/CD ---
+# Ignora artefatos temporários do GitHub Actions
+.github/workflows/tmp/
+.github/workflows/*.bak
+.github/workflows/*.log
+
+# --- 🧾 Documentação / Cache ---
+*.md.bak
+*.md~
+*.log.*
+*.html.bak
+__pycache__/
+.tox/
+pytest_cache/
+
+# --- 🧪 Allure / Relatórios (opcional) ---
+allure-results/
+allure-report/
+
+# --- 📦 Arquivos locais / exportações ---
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# --- 🔄 Backup Robot Framework (paralelos) ---
+output/
+rebot-output/
