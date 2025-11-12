@@ -24,6 +24,13 @@ O objetivo é validar cada camada do sistema, garantindo que **dados, funcionali
 | **Integration Tests** | Robot Framework | Garantir integração entre scraping, banco de dados e geração de JSON. |
 | **Unit Tests (keywords)** | Robot Framework | Validar regras internas e funções utilitárias de forma isolada. |
 
+
+## Testes Realizados
+
+| Tipo de Teste | Cypress | Robot Framework |
+|----------------|----------|-----------------|
+| Smoke API | OK | OK |
+
 ---
 
 ## ⚙️ Stack Técnica
