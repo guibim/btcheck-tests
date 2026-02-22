@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "f37e3168-a1a9-4bff-ada9-a2b4345db6aa",
+		"name": "APIs BTCHECK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38337398",
+		"_collection_link": "https://testeteam-3263.postman.co/workspace/Btcheck~0f1f7851-8ae8-47b3-ba16-42d3816d7aa4/collection/38337398-f37e3168-a1a9-4bff-ada9-a2b4345db6aa?action=share&source=collection_link&creator=38337398"
+	},
+	"item": [
+		{
+			"name": "FNG - Alternative Smoke",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.alternative.me/fng/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"alternative",
+						"me"
+					],
+					"path": [
+						"fng",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "History - Binance Smoke",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.binance.com",
+					"protocol": "https",
+					"host": [
+						"api",
+						"binance",
+						"com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Btcheck - Price (Coingecko fork) - Smoke",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://guibim.github.io/btcheck/btc_price.json",
+					"protocol": "https",
+					"host": [
+						"guibim",
+						"github",
+						"io"
+					],
+					"path": [
+						"btcheck",
+						"btc_price.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USD_BRL - Frankfurter Smoke",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.frankfurter.app/latest?from=USD&to=BRL",
+					"protocol": "https",
+					"host": [
+						"api",
+						"frankfurter",
+						"app"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "USD"
+						},
+						{
+							"key": "to",
+							"value": "BRL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Price BTC - Coingecko",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl",
+					"protocol": "https",
+					"host": [
+						"api",
+						"coingecko",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd,brl"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Btcheck - News Smoke",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://guibim.github.io/btcheck/news.json",
+					"protocol": "https",
+					"host": [
+						"guibim",
+						"github",
+						"io"
+					],
+					"path": [
+						"btcheck",
+						"news.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
