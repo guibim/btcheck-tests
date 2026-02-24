@@ -1,169 +1,404 @@
 {
-	"info": {
-		"_postman_id": "f37e3168-a1a9-4bff-ada9-a2b4345db6aa",
-		"name": "APIs BTCHECK",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "38337398",
-		"_collection_link": "https://testeteam-3263.postman.co/workspace/Btcheck~0f1f7851-8ae8-47b3-ba16-42d3816d7aa4/collection/38337398-f37e3168-a1a9-4bff-ada9-a2b4345db6aa?action=share&source=collection_link&creator=38337398"
-	},
-	"item": [
-		{
-			"name": "FNG - Alternative Smoke",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://api.alternative.me/fng/",
-					"protocol": "https",
-					"host": [
-						"api",
-						"alternative",
-						"me"
-					],
-					"path": [
-						"fng",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "History - Binance Smoke",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://api.binance.com",
-					"protocol": "https",
-					"host": [
-						"api",
-						"binance",
-						"com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Btcheck - Price (Coingecko fork) - Smoke",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://guibim.github.io/btcheck/btc_price.json",
-					"protocol": "https",
-					"host": [
-						"guibim",
-						"github",
-						"io"
-					],
-					"path": [
-						"btcheck",
-						"btc_price.json"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "USD_BRL - Frankfurter Smoke",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://api.frankfurter.app/latest?from=USD&to=BRL",
-					"protocol": "https",
-					"host": [
-						"api",
-						"frankfurter",
-						"app"
-					],
-					"path": [
-						"latest"
-					],
-					"query": [
-						{
-							"key": "from",
-							"value": "USD"
-						},
-						{
-							"key": "to",
-							"value": "BRL"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Price BTC - Coingecko",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl",
-					"protocol": "https",
-					"host": [
-						"api",
-						"coingecko",
-						"com"
-					],
-					"path": [
-						"api",
-						"v3",
-						"simple",
-						"price"
-					],
-					"query": [
-						{
-							"key": "ids",
-							"value": "bitcoin"
-						},
-						{
-							"key": "vs_currencies",
-							"value": "usd,brl"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Btcheck - News Smoke",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://guibim.github.io/btcheck/news.json",
-					"protocol": "https",
-					"host": [
-						"guibim",
-						"github",
-						"io"
-					],
-					"path": [
-						"btcheck",
-						"news.json"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "f37e3168-a1a9-4bff-ada9-a2b4345db6aa",
+    "name": "APIs BTCHECK",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38337398",
+    "_collection_link": "https://go.postman.co/collection/38337398-f37e3168-a1a9-4bff-ada9-a2b4345db6aa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "FNG - Alternative Smoke",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+              "pm.test(\"Response time < 2000ms\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+              "\r",
+              "pm.test(\"JSON válido\", () => pm.response.to.be.json);\r",
+              "\r",
+              "const body = pm.response.json();\r",
+              "\r",
+              "pm.test(\"data é array e tem itens\", () => {\r",
+              "  pm.expect(body).to.have.property(\"data\");\r",
+              "  pm.expect(body.data).to.be.an(\"array\");\r",
+              "  pm.expect(body.data.length).to.be.greaterThan(0);\r",
+              "});\r",
+              "\r",
+              "const first = body.data[0] || {};\r",
+              "\r",
+              "pm.test(\"Campos básicos existem\", () => {\r",
+              "  pm.expect(first).to.have.property(\"value\");\r",
+              "  pm.expect(first).to.have.property(\"value_classification\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"value entre 0 e 100\", () => {\r",
+              "  const v = Number(first.value);\r",
+              "  pm.expect(Number.isFinite(v)).to.eql(true);\r",
+              "  pm.expect(v).to.be.at.least(0);\r",
+              "  pm.expect(v).to.be.at.most(100);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.alternative.me/fng/",
+          "protocol": "https",
+          "host": [
+            "api",
+            "alternative",
+            "me"
+          ],
+          "path": [
+            "fng",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "History - Binance Smoke",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+              "pm.test(\"Response time < 4000ms\", () => pm.expect(pm.response.responseTime).to.be.below(4000));\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.binance.com",
+          "protocol": "https",
+          "host": [
+            "api",
+            "binance",
+            "com"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Btcheck - Price (Coingecko fork) - Smoke",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+              "pm.test(\"Response time < 2000ms\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
+              "pm.test(\"JSON válido\", () => pm.response.to.be.json);\r",
+              "\r",
+              "const body = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Schema mínimo\", () => {\r",
+              "  pm.expect(body).to.have.property(\"updated_at\");\r",
+              "  pm.expect(body).to.have.property(\"source\");\r",
+              "  pm.expect(body).to.have.property(\"prices\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"source é coingecko\", () => {\r",
+              "  pm.expect(body.source).to.eql(\"coingecko\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"updated_at formato ISO UTC com Z\", () => {\r",
+              "  pm.expect(body.updated_at).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$/);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"prices tem BTC_USD e BTC_BRL numéricos e > 0\", () => {\r",
+              "  pm.expect(body.prices).to.have.property(\"BTC_USD\");\r",
+              "  pm.expect(body.prices).to.have.property(\"BTC_BRL\");\r",
+              "\r",
+              "  const usd = Number(body.prices.BTC_USD);\r",
+              "  const brl = Number(body.prices.BTC_BRL);\r",
+              "\r",
+              "  pm.expect(Number.isFinite(usd)).to.eql(true);\r",
+              "  pm.expect(Number.isFinite(brl)).to.eql(true);\r",
+              "  pm.expect(usd).to.be.greaterThan(0);\r",
+              "  pm.expect(brl).to.be.greaterThan(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://guibim.github.io/btcheck/btc_price.json",
+          "protocol": "https",
+          "host": [
+            "guibim",
+            "github",
+            "io"
+          ],
+          "path": [
+            "btcheck",
+            "btc_price.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USD_BRL - Frankfurter Smoke",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+              "pm.test(\"JSON válido\", () => pm.response.to.be.json);\r",
+              "\r",
+              "const body = pm.response.json();\r",
+              "\r",
+              "pm.test(\"base USD\", () => pm.expect(body.base).to.eql(\"USD\"));\r",
+              "pm.test(\"date YYYY-MM-DD\", () => pm.expect(body.date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/));\r",
+              "pm.test(\"rates.BRL numérico > 0\", () => {\r",
+              "  pm.expect(body.rates).to.have.property(\"BRL\");\r",
+              "  const brl = Number(body.rates.BRL);\r",
+              "  pm.expect(Number.isFinite(brl)).to.eql(true);\r",
+              "  pm.expect(brl).to.be.greaterThan(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.frankfurter.app/latest?from=USD&to=BRL",
+          "protocol": "https",
+          "host": [
+            "api",
+            "frankfurter",
+            "app"
+          ],
+          "path": [
+            "latest"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "USD"
+            },
+            {
+              "key": "to",
+              "value": "BRL"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Price BTC - Coingecko",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+              "pm.test(\"JSON válido\", () => pm.response.to.be.json);\r",
+              "\r",
+              "const body = pm.response.json();\r",
+              "\r",
+              "pm.test(\"bitcoin.usd e bitcoin.brl existem e são numéricos\", () => {\r",
+              "  pm.expect(body).to.have.property(\"bitcoin\");\r",
+              "  pm.expect(body.bitcoin).to.have.property(\"usd\");\r",
+              "  pm.expect(body.bitcoin).to.have.property(\"brl\");\r",
+              "\r",
+              "  const usd = Number(body.bitcoin.usd);\r",
+              "  const brl = Number(body.bitcoin.brl);\r",
+              "\r",
+              "  pm.expect(Number.isFinite(usd)).to.eql(true);\r",
+              "  pm.expect(Number.isFinite(brl)).to.eql(true);\r",
+              "  pm.expect(usd).to.be.greaterThan(0);\r",
+              "  pm.expect(brl).to.be.greaterThan(0);\r",
+              "});\r",
+              "\r",
+              "// Soft check: não falha a suite, só loga\r",
+              "(() => {\r",
+              "  const usd = Number(body?.bitcoin?.usd);\r",
+              "  const brl = Number(body?.bitcoin?.brl);\r",
+              "  if (Number.isFinite(usd) && Number.isFinite(brl) && brl <= usd) {\r",
+              "    console.warn(\"Soft check: BRL <= USD (verificar conversão/cenário atípico).\", { usd, brl });\r",
+              "  }\r",
+              "})();"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl",
+          "protocol": "https",
+          "host": [
+            "api",
+            "coingecko",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v3",
+            "simple",
+            "price"
+          ],
+          "query": [
+            {
+              "key": "ids",
+              "value": "bitcoin"
+            },
+            {
+              "key": "vs_currencies",
+              "value": "usd,brl"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Btcheck - News Smoke",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+              "pm.test(\"Response time < 2500ms\", () => pm.expect(pm.response.responseTime).to.be.below(2500));\r",
+              "pm.test(\"JSON válido\", () => pm.response.to.be.json);\r",
+              "\r",
+              "const body = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Schema topo\", () => {\r",
+              "  pm.expect(body).to.have.property(\"generated_at\");\r",
+              "  pm.expect(body).to.have.property(\"count\");\r",
+              "  pm.expect(body).to.have.property(\"items\");\r",
+              "  pm.expect(body.items).to.be.an(\"array\");\r",
+              "  pm.expect(typeof body.count).to.eql(\"number\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"count consistente com items.length (quando aplicável)\", () => {\r",
+              "  pm.expect(body.items.length).to.eql(body.count);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Items têm campos obrigatórios\", () => {\r",
+              "  body.items.forEach((it, idx) => {\r",
+              "    pm.expect(it, `item[${idx}]`).to.have.property(\"id\");\r",
+              "    pm.expect(it, `item[${idx}]`).to.have.property(\"source\");\r",
+              "    pm.expect(it, `item[${idx}]`).to.have.property(\"title\");\r",
+              "    pm.expect(it, `item[${idx}]`).to.have.property(\"url\");\r",
+              "\r",
+              "    // novo contrato: date-only\r",
+              "    pm.expect(it, `item[${idx}]`).to.have.property(\"published_date\");\r",
+              "\r",
+              "    pm.expect(it.title, `item[${idx}].title`).to.be.a(\"string\").and.not.empty;\r",
+              "    pm.expect(it.url, `item[${idx}].url`).to.match(/^https?:\\/\\//);\r",
+              "    pm.expect(it.published_date, `item[${idx}].published_date`).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+              "  });\r",
+              "});\r",
+              "\r",
+              "// Anti-duplicação básica (ids únicos no payload)\r",
+              "pm.test(\"IDs únicos no payload\", () => {\r",
+              "  const ids = body.items.map(it => it.id);\r",
+              "  const uniq = new Set(ids);\r",
+              "  pm.expect(uniq.size).to.eql(ids.length);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://guibim.github.io/btcheck/news.json",
+          "protocol": "https",
+          "host": [
+            "guibim",
+            "github",
+            "io"
+          ],
+          "path": [
+            "btcheck",
+            "news.json"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }
